@@ -3,6 +3,8 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
+const usersRouter = require("./routes/usersRouter");
+const recordsRouter = require("./routes/recordsRouter");
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
@@ -38,6 +40,9 @@ app.get("/", (req, res) => {
 });
 
 // routes
+
+app.use("/users", usersRouter);
+app.use("/records", recordsRouter);
 
 // error handling
 app.use(function errorHandler(err, req, res, next) {
