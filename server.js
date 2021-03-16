@@ -37,6 +37,7 @@ mongoose
   });
 
 // available routes
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
@@ -47,6 +48,7 @@ app.use("/users", usersRouter);
 app.use("/records", recordsRouter);
 
 // error handling
+
 app.use(function errorHandler(err, req, res, next) {
   res.status(err.status || 500).send({
     error: {
