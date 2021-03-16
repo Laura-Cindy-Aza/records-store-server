@@ -3,13 +3,17 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
+const usersRouter = require("./routes/usersRouter");
+const recordsRouter = require("./routes/recordsRouter");
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
 
+// Express Middleware
 app.use(express.json());
+app.use("/statics", express.static("statics"));
 
 const DB_NAME = process.env.DB_NAME;
 const DB_USER = process.env.DB_USER;
@@ -38,6 +42,9 @@ app.get("/", (req, res) => {
 });
 
 // routes
+
+app.use("/users", usersRouter);
+app.use("/records", recordsRouter);
 
 // error handling
 app.use(function errorHandler(err, req, res, next) {
