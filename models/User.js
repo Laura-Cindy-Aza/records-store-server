@@ -15,7 +15,7 @@ const UserSchema = new Schema ( {
     versionKey: false,
     timestamps: true,
     toJSON:{
-        virtual:true,
+        virtuals: true,
     }
 }
 )
