@@ -20,10 +20,10 @@ exports.getRecord = async (req, res, next) => {
 
 // POST /records => create record
 exports.addRecord = async (req, res, next) => {
-    const { text } = req.body;
+    const recordData = req.body;
 
     try {
-        const newRecord = await Record.create(req.body);
+        const newRecord = await Record.create(recordData);
         res.json(newRecord);
     } catch (error) {
         next(error)

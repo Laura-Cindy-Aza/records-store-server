@@ -20,10 +20,10 @@ exports.getUser = async (req, res, next) => {
 
 // POST /users => create user
 exports.addUser = async (req, res, next) => {
-    const { text } = req.body;
+    const userData = req.body;
 
     try {
-        const newUser = await User.create(req.body);
+        const newUser = await User.create(userData);
         res.json(newUser);
     } catch (error) {
         next(error)
