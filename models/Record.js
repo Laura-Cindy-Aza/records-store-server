@@ -3,16 +3,16 @@ const {Schema, model} = mongoose;
 
 //RecordSchema - contains rules about how every Record should look like
 const RecordSchema = new Schema ( {
-    cover: {type: String},
-    title: {type: String},
-    artist: {type: String},
-    year: {type: Date}
+    cover: {type: String, required: true},
+    title: {type: String, required: true},
+    artist: {type: String, required: true},
+    year: {type: Date, required: true}
 },
 {
     versionKey: false,
     timestamps: true,
     toJSON:{
-        virtual:true,
+        virtuals:true,
     }
 }
 )
