@@ -11,7 +11,9 @@ app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
 
+// Express Middleware
 app.use(express.json());
+app.use("/statics", express.static("statics"));
 
 const DB_NAME = process.env.DB_NAME;
 const DB_USER = process.env.DB_USER;
