@@ -6,7 +6,7 @@ const UserSchema = new Schema ( {
     firstName: { type: String, required: true},
     lastName: { type: String, required: true},
     email: {type: String, unique:true, required: true},
-    nickname: { type: String, unique: true, required: true},
+    nickName: { type: String, required: true},
     password: {type: String, required:true},
     avatar: {type: String, required: true, default: '../assets/doge2.png'}
 
