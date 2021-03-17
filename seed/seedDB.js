@@ -10,7 +10,7 @@ const PORT = process.env.PORT;
 
 (async function () {
 
-  const connectionStr = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.6otrv.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+  const connectionStr = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.MONGO_URI}/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
   mongoose
     .connect(connectionStr, {
