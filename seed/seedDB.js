@@ -7,13 +7,15 @@ dotenv.config();
 console.log("We run the Seed script");
 const PORT = process.env.PORT;
 
-(async function () {
-  // const DB_NAME = process.env.DB_NAME;
-  // const DB_USER = process.env.DB_USER;
-  // const DB_PASSWORD = process.env.DB_PASSWORD;
-  // const MONGO_URI = process.env.MONGO_URI;
+const DB_NAME = process.env.DB_NAME;
+const DB_USER = process.env.DB_USER;
+const DB_PASSWORD = process.env.DB_PASSWORD;
+const MONGO_URI = process.env.MONGO_URI;
 
-  const connectionStr = `mongodb+srv://mizzrawr:Gatito109.@cluster0.6otrv.mongodb.net/records_db?retryWrites=true&w=majority`;
+
+(async function () {
+
+  const connectionStr = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${MONGO_URI}/${DB_NAME}?retryWrites=true&w=majority`;
 
   mongoose
     .connect(connectionStr, {
