@@ -77,9 +77,9 @@ const PORT = process.env.PORT;
     .map(() => {
       // create a fake record
       const recordData = {
-          cover: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/6d/6d4552b8bfc59858948866f6393d3b6bc9ed7fc1",
-          title:faker.lorem.text(),
-          artist: faker.name.firstName(),
+          cover: faker.image.abstract(),
+          title:faker.lorem.word(),
+          artist: faker.internet.userAgent,
           year:faker.date.past(),
 
 
