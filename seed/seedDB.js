@@ -79,7 +79,7 @@ const PORT = process.env.PORT;
       const recordData = {
           cover: faker.image.abstract(),
           title:faker.lorem.word(),
-          artist: faker.internet.userAgent,
+          artist: faker.name.jobType(),
           year:faker.date.past(),
 
 
