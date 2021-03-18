@@ -53,7 +53,7 @@ const PORT = process.env.PORT;
           email: faker.internet.email(),
           nickName:faker.internet.userName(),
           password: "1234567",
-          //avatar: `https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/6d/6d4552b8bfc59858948866f6393d3b6bc9ed7fc1`,
+          avatar: faker.internet.avatar(),
 
       };
       console.log(`User ${userData.email} has been created`);
