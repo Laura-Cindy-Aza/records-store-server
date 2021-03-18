@@ -17,7 +17,7 @@ const RecordSchema = new Schema ( {
 }
 )
 
-RecordSchema.virtual('fullRecordInfo').get(function(){
+RecordSchema.virtual('cover and artist').get(function(){
     return this.cover + ' ' + this.artist;
 })
 
