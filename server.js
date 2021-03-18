@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -12,6 +13,7 @@ app.listen(PORT, () => {
 });
 
 // Express Middleware
+app.use(cors());
 app.use(express.json());
 app.use("/statics", express.static("statics"));
 
