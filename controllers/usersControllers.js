@@ -12,6 +12,7 @@ exports.getUser = async (req, res, next) => {
 
     try {
         const user = await User.findById(id);
+        user.avatar = `${req.protocoll}://${req.get('host')}${user.avatar}`
         res.json(user);
     } catch (error) {
         next(error)
@@ -24,6 +25,7 @@ exports.addUser = async (req, res, next) => {
 
     try {
         const newUser = await User.create(userData);
+        user.avatar = `${req.protocoll}://${req.get('host')}${user.avatar}`
         res.json(newUser);
     } catch (error) {
         next(error)
@@ -36,6 +38,7 @@ exports.updateUser = async (req, res, next) => {
 
     try {
         let updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true });
+        user.avatar = `${req.protocoll}://${req.get('host')}${user.avatar}`
         res.json(updatedUser);
     } catch (err) {
         next(err)
