@@ -80,13 +80,11 @@ console.log("We run the Seed script");
           title:faker.lorem.word(),
           artist: faker.internet.userAgent,
           year:faker.date.past(),
-
-
       };
       console.log(`record ${recordData.title} has been created`);
 
       const record = new Record(recordData);
-      return record.save();
+      return record.save();d
     });
 
     try{
