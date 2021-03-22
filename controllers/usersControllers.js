@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
 
 // GET /users => get all users
 exports.getUsers = async (req, res, next) => {
@@ -21,15 +22,43 @@ exports.getUser = async (req, res, next) => {
 
 // POST /users => create user
 exports.addUser = async (req, res, next) => {
-    const userData = req.body;
+    const {firstName, lastName, nickName, email, password, avatar} = req.body;
+
+     // generating the salt 
+    const salt = await bcrypt.genSalt(10);
+
+    // hashing pass /// first argument is the text pass, the second is the salt 
+    const hashedPass = await bcrypt.hash(password, salt);
 
     try {
-        const newUser = await User.create(userData);
-        user.avatar = `${req.protocoll}://${req.get('host')}${user.avatar}`
+        console.log({ password: hashedPass, firstName, lastName, email, nickName, avatar });
+        // const newUser = await User.create(userData);
+        const newUser = await User.create({password: hashedPass, firstName, lastName, email, nickName, avatar});
+        user.avatar = `${req.protocoll}://${req.get('host')}${user.avatar}`;
+
         res.json(newUser);
     } catch (error) {
         next(error)
     };
+};
+
+// CHECK USER
+exports.checkUser = async (req, res, next) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.json({ msg: "Invalid email" });
+        }
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.json({ msg: "Invalid password" });
+        }
+        res.json({ msg: `Welcome ${user.firstName}!`});
+    } catch (error) {
+        next(error);
+    }
 };
 
 // PATCH /users/:id => update user by ID

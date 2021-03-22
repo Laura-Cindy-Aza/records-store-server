@@ -5,7 +5,6 @@ const Record = require("../models/Record");
 const dotenv = require("dotenv");
 dotenv.config();
 console.log("We run the Seed script");
-const PORT = process.env.PORT;
 
 
 (async function () {
@@ -81,13 +80,11 @@ const PORT = process.env.PORT;
           title:faker.lorem.word(),
           artist: faker.name.jobType(),
           year:faker.date.past(),
-
-
       };
       console.log(`record ${recordData.title} has been created`);
 
       const record = new Record(recordData);
-      return record.save();
+      return record.save();d
     });
 
     try{

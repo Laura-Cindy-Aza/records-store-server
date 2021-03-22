@@ -9,7 +9,6 @@ const UserSchema = new Schema ( {
     nickName: { type: String, required: true,mix: 3, max: 50,unique:true},
     password: {type: String, required:true, mix: 3, max: 50},
     avatar: {type: String, required: true, default: '../assets/doge2.png'}
-
 },
 {
     versionKey: false,
