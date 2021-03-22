@@ -52,7 +52,7 @@ console.log("We run the Seed script");
           email: faker.internet.email(),
           nickName:faker.internet.userName(),
           password: "1234567",
-          //avatar: `https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/6d/6d4552b8bfc59858948866f6393d3b6bc9ed7fc1`,
+          avatar: faker.internet.avatar(),
 
       };
       console.log(`User ${userData.email} has been created`);
@@ -78,7 +78,7 @@ console.log("We run the Seed script");
       const recordData = {
           cover: faker.image.abstract(),
           title:faker.lorem.word(),
-          artist: faker.internet.userAgent,
+          artist: faker.name.jobType(),
           year:faker.date.past(),
       };
       console.log(`record ${recordData.title} has been created`);

@@ -6,7 +6,7 @@ const RecordSchema = new Schema ( {
     cover: {type: String, required: true},
     title: {type: String, required: true},
     artist: {type: String, required: true},
-    year: {type: Date, required: true}
+    year: {type: Date, required: true,}
 },
 {
     versionKey: false,
@@ -17,7 +17,7 @@ const RecordSchema = new Schema ( {
 }
 )
 
-RecordSchema.virtual('fullRecordInfo').get(function(){
+RecordSchema.virtual('cover and artist').get(function(){
     return this.cover + ' ' + this.artist;
 })
 

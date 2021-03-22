@@ -3,13 +3,12 @@ const {Schema, model} = mongoose;
 
 //UserSchema - contains rules about how every User should look like
 const UserSchema = new Schema ( {
-    firstName: { type: String, required: true},
-    lastName: { type: String, required: true},
-    email: {type: String, unique:true, required: true},
-    nickName: { type: String, required: true},
-    password: {type: String, required:true},
-    avatar: {type: String, required: false, default: '../assets/doge2.png'}
-
+    firstName: { type: String, required: true, mix: 3, max: 50},
+    lastName: { type: String, required: true,mix: 3, max: 50,},
+    email: {type: String, unique:true, required: true, mix: 7, max: 50, unique: true},
+    nickName: { type: String, required: true,mix: 3, max: 50,unique:true},
+    password: {type: String, required:true, mix: 3, max: 50},
+    avatar: {type: String, required: true, default: '../assets/doge2.png'}
 },
 {
     versionKey: false,

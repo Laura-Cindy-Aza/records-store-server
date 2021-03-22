@@ -13,6 +13,7 @@ exports.getUser = async (req, res, next) => {
 
     try {
         const user = await User.findById(id);
+        user.avatar = `${req.protocoll}://${req.get('host')}${user.avatar}`
         res.json(user);
     } catch (error) {
         next(error)
@@ -33,6 +34,8 @@ exports.addUser = async (req, res, next) => {
         console.log({ password: hashedPass, firstName, lastName, email, nickName, avatar });
         // const newUser = await User.create(userData);
         const newUser = await User.create({password: hashedPass, firstName, lastName, email, nickName, avatar});
+        user.avatar = `${req.protocoll}://${req.get('host')}${user.avatar}`;
+
         res.json(newUser);
     } catch (error) {
         next(error)
@@ -64,6 +67,7 @@ exports.updateUser = async (req, res, next) => {
 
     try {
         let updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true });
+        user.avatar = `${req.protocoll}://${req.get('host')}${user.avatar}`
         res.json(updatedUser);
     } catch (err) {
         next(err)
