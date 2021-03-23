@@ -22,7 +22,7 @@ exports.getUser = async (req, res, next) => {
 
 // POST /users => create user
 exports.addUser = async (req, res, next) => {
-  const { firstName, lastName, nickName, email, password, avatar } = req.body;
+  const { firstName, lastName, nickName, email, password } = req.body;
 
   // generating the salt
   const salt = await bcrypt.genSalt(10);
@@ -31,28 +31,19 @@ exports.addUser = async (req, res, next) => {
   const hashedPass = await bcrypt.hash(password, salt);
 
   try {
-    console.log({
-      password: hashedPass,
-      firstName,
-      lastName,
-      email,
-      nickName,
-      avatar,
-    });
     // const newUser = await User.create(userData);
-    const newUser = await User.create({
-      password: hashedPass,
+    const newUser = new User({
+      password,
       firstName,
       lastName,
       email,
       nickName,
-      avatar,
     });
-    user.avatar = `${req.protocoll}://${req.get("host")}${user.avatar}`;
-
-    res.json(newUser);
+    // user.avatar = `${req.protocoll}://${req.get("host")}${user.avatar}`;
+    const savedUser = await newUser.save();
+    res.send(savedUser);
   } catch (error) {
-    next(error);
+    res.status(400).send(error);
   }
 };
 
