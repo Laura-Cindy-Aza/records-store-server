@@ -2,8 +2,14 @@ const Order = require("../models/Order");
 
 // GET /orders => get all orders
 exports.getOrders = async (req, res, next) => {
-  let allOrders = await Order.find();
+  let allOrders = await Order.find().populate("record");
   res.send(allOrders);
+};
+
+exports.getUserOrders = async (req, res, next) => {
+  const { userId } = req.params;
+  const userOrder = await Order.find({ userId });
+  res.json(userOrder);
 };
 
 // GET /orders/:id => get single order by ID
@@ -24,6 +30,8 @@ exports.addOrder = async (req, res, next) => {
 
   try {
     const newOrder = await Order.create(orderData);
+    console.log("req.body", req.body.records);
+    console.log(newOrder);
     res.json(newOrder);
   } catch (error) {
     next(error);
