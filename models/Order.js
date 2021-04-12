@@ -8,7 +8,7 @@ const OrderSchema = new Schema ( {
         quantity: {type: Number, required: true}
     }],
 
-    totalPrice: {type: String, required: true},
+    totalPrice: {type: Number, required: true},
 },
 {
     versionKey: false,
