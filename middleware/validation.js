@@ -1,4 +1,4 @@
-const { body, validationResult } = require('express-validator');
+const { body, validationResult } = require("express-validator");
 
 //Record Validation
 exports.validateRecord = (req, res, next) => {
