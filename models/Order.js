@@ -6,8 +6,12 @@ const OrderSchema = new Schema(
   {
     records: [
       {
-        record: { type: String, required: true },
-        quantity: { type: Number, required: true },
+        record: {
+          type: Schema.Types.ObjectId,
+          required: true,
+          ref: "Record",
+          quantity: { type: Number },
+        },
       },
     ],
 

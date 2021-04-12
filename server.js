@@ -7,7 +7,8 @@ dotenv.config();
 const usersRouter = require("./routes/usersRouter");
 const recordsRouter = require("./routes/recordsRouter");
 const ordersRouter = require("./routes/ordersRouter");
-const expressValidator = require('express-validator')
+const meRouter = require("./routes/meRouter");
+const expressValidator = require("express-validator");
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
@@ -51,6 +52,7 @@ app.get("/", (req, res) => {
 app.use("/users", usersRouter);
 app.use("/records", recordsRouter);
 app.use("/orders", ordersRouter);
+app.use("/me", meRouter); // handles all requests for logged in users
 
 // error handling
 
