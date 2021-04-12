@@ -84,7 +84,7 @@ console.log("We run the Seed script");
       console.log(`record ${recordData.title} has been created`);
 
       const record = new Record(recordData);
-      return record.save();d
+      return record.save();
     });
 
     try{
