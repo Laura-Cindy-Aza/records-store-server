@@ -14,7 +14,7 @@ exports.getUser = async (req, res, next) => {
 
   try {
     const user = await User.findById(id);
-    user.avatar = `${req.protocoll}://${req.get("host")}${user.avatar}`;
+    user.avatar = `${req.protocol}://${req.get("host")}${user.avatar}`;
     res.json(user);
   } catch (error) {
     next(error);
