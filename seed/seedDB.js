@@ -82,6 +82,10 @@ console.log("We run the Seed script");
 
       const record = new Record(recordData);
       return record.save();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5e6fbb4f9e4f84acd0c2f8b7c4e8c392f02b17d1
     });
 
   try {
