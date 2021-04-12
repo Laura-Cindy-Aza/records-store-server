@@ -1,5 +1,10 @@
+
 const express = require("express");
 const router = express.Router();
+const {
+  userValidationRules,
+  userValidationErrorHandling,
+} = require('../middleware/validation');
 
 const {
   getUsers,
@@ -12,8 +17,10 @@ const {
 
 //  /users
 
-router.route("/").get(getUsers).post(addUser);
+router.route("/").get(getUsers).post(userValidationRules(), userValidationErrorHandling, addUser);
+
 router.route("/login").post(checkUser);
+
 
 // users/:id
 
