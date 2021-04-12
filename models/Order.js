@@ -9,6 +9,10 @@ const OrderSchema = new Schema ( {
     }],
 
     totalPrice: {type: Number, required: true},
+    userId: {
+        type: Schema.Types.ObjectId, // all references have to have ObjectId
+        ref: "User", // tell mongoose in WHICH collection to look up this ID
+        },
 },
 {
     versionKey: false,
