@@ -1,13 +1,13 @@
 const Order = require('../models/Order');
 
 // GET /orders => get all orders
-exports.getRecords = async (req, res, next) => {
+exports.getOrders = async (req, res, next) => {
     let allOrders = await Order.find();
     res.send(allOrders);
 };
 
 // GET /orders/:id => get single order by ID
-exports.getRecord = async (req, res, next) => {
+exports.getOrder= async (req, res, next) => {
     const { id } = req.params;
 
     try {
@@ -19,7 +19,7 @@ exports.getRecord = async (req, res, next) => {
 };
 
 // POST /orders => create order
-exports.addRecord = async (req, res, next) => {
+exports.addOrder = async (req, res, next) => {
     const orderData = req.body;
 
     try {
@@ -31,7 +31,7 @@ exports.addRecord = async (req, res, next) => {
 };
 
 // PATCH /orders/:id => update order by ID
-exports.updateRecord = async (req, res, next) => {
+exports.updateOrder = async (req, res, next) => {
     const { id } = req.params;
 
     try {
@@ -43,7 +43,7 @@ exports.updateRecord = async (req, res, next) => {
 };
 
 // DELETE /orders/:id => remove order by ID
-exports.deleteRecord = async (req, res, next) => {
+exports.deleteOrder = async (req, res, next) => {
     const { id } = req.params;
 
     try {
