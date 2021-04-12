@@ -82,7 +82,7 @@ console.log("We run the Seed script");
 
       const record = new Record(recordData);
       return record.save();
-      d;
+
     });
 
   try {
