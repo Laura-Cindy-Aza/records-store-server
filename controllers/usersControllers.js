@@ -33,7 +33,7 @@ exports.addUser = async (req, res, next) => {
   try {
     // const newUser = await User.create(userData);
     const newUser = new User({
-      password,
+      password: hashedPass,
       firstName,
       lastName,
       email,
