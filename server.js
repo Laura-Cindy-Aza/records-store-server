@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const usersRouter = require("./routes/usersRouter");
 const recordsRouter = require("./routes/recordsRouter");
+const ordersRouter = require("./routes/ordersRouter");
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
@@ -48,6 +49,7 @@ app.get("/", (req, res) => {
 
 app.use("/users", usersRouter);
 app.use("/records", recordsRouter);
+app.use("/orders", ordersRouter);
 
 // error handling
 

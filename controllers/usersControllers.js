@@ -56,8 +56,8 @@ exports.checkUser = async (req, res, next) => {
     if (!user) {
       return res.json({ msg: "Invalid email" });
     }
-    // const isMatch = await bcrypt.compare(password, user.password);
-    const isMatch = password === user.password;
+    const isMatch = await bcrypt.compare(password, user.password);
+    // const isMatch = password === user.password;
     if (!isMatch) {
       return res.json({ msg: "Invalid password" });
     }
