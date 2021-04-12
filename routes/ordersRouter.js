@@ -1,14 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-
 const {
-    getOrder,
-    addOrder,
-    updateOrder,
-    deleteOrder
+  getOrder,
+  addOrder,
+  updateOrder,
+  deleteOrder,
 } = require("../controllers/ordersControllers");
-const { validateOrder } = require('../middleware/validation');
+const { validateOrder } = require("../middleware/validation");
 
 // orders
 router.route("/").get(getOrder).post(validateOrder, addOrder);
