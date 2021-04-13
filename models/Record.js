@@ -9,10 +9,7 @@ const RecordSchema = new Schema(
     artist: { type: String, required: true },
     year: { type: Date, required: true },
     price: { type: Number, required: true },
-    userId: {
-      type: Schema.Types.ObjectId, // all references have to have ObjectId
-      ref: "User", // tell mongoose in WHICH collection to look up this ID
-      },
+    quantity: { type: Number },
   },
   {
     versionKey: false,
