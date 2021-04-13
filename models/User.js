@@ -16,6 +16,9 @@ const UserSchema = new Schema(
     timestamps: true,
     toJSON: {
       virtuals: true,
+      transform: (docOriginal, docToReturn) => {
+        delete docToReturn.password
+      }
     },
   }
 );
