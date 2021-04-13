@@ -1,8 +1,8 @@
-const { body } = require('express-validator/check')
+const { body } = require("express-validator/check");
 const User = require("../models/User");
 const bcryptjs = require("bcryptjs");
-const cookieParser = require('cookie-parser');
-const jwt = require('jsonwebtoken');
+const cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken");
 
 // GET /users => get all users
 exports.getUsers = async (req, res, next) => {
@@ -51,7 +51,7 @@ exports.addUser = async (req, res, next) => {
 };
 
 // CHECK USER
-exports.checkUser = async (req, res, next) => {
+exports.loginUser = async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
