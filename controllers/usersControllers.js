@@ -1,6 +1,8 @@
 const { body } = require('express-validator/check')
 const User = require("../models/User");
-const bcrypt = require("bcrypt");
+const bcryptjs = require("bcryptjs");
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 
 // GET /users => get all users
 exports.getUsers = async (req, res, next) => {
@@ -26,10 +28,10 @@ exports.addUser = async (req, res, next) => {
   const { firstName, lastName, nickName, email, password } = req.body;
 
   // generating the salt
-  const salt = await bcrypt.genSalt(10);
+  const salt = await bcryptjs.genSalt(10);
 
   // hashing pass /// first argument is the text pass, the second is the salt
-  const hashedPass = await bcrypt.hash(password, salt);
+  const hashedPass = await bcryptjs.hash(password, salt);
 
   try {
     // const newUser = await User.create(userData);
@@ -57,7 +59,7 @@ exports.checkUser = async (req, res, next) => {
     if (!user) {
       return res.json({ msg: "Invalid email" });
     }
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcryptjs.compare(password, user.password);
     // const isMatch = password === user.password;
     if (!isMatch) {
       return res.json({ msg: "Invalid password" });
