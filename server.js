@@ -7,7 +7,8 @@ dotenv.config();
 const usersRouter = require("./routes/usersRouter");
 const recordsRouter = require("./routes/recordsRouter");
 const ordersRouter = require("./routes/ordersRouter");
-const expressValidator = require('express-validator')
+const expressValidator = require('express-validator');
+
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
