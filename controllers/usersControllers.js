@@ -1,6 +1,7 @@
-const { body } = require('express-validator/check')
+const { body } = require("express-validator/check");
 const User = require("../models/User");
 const bcryptjs = require("bcryptjs");
+
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const customError = require('../helpers/customError');
@@ -65,7 +66,9 @@ exports.addUser = async (req, res, next) => {
   }
 };
 
+
 // Log in user =>
+
 exports.loginUser = async (req, res, next) => {
   const { email, password } = req.body;
 
