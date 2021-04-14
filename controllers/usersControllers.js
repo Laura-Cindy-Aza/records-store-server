@@ -1,7 +1,6 @@
 const { body } = require("express-validator/check");
 const User = require("../models/User");
 const bcryptjs = require("bcryptjs");
-
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const customError = require('../helpers/customError');
@@ -9,7 +8,7 @@ const customError = require('../helpers/customError');
 
 // GET /users => get all users
 exports.getUsers = async (req, res, next) => {
-  let allUsers = await User.find();
+  let allUsers = await User.find().sort('firstName');
   res.send(allUsers);
 };
 
