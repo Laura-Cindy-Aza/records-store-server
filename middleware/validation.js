@@ -67,6 +67,13 @@ exports.userValidationRules = () => {
   ];
 };
 
+// // User Validation Error Handling
+// exports.userValidationErrorHandling = (req, res, next) => {
+//   const errors = validationResult(req);
+//   if (errors.isEmpty()) return next();
+
+//   res.status(422).json({ errors: errors.array() });
+// };
 // User Validation Error Handling
 exports.userValidationErrorHandling = (req, res, next) => {
   const errors = validationResult(req);
@@ -76,6 +83,7 @@ exports.userValidationErrorHandling = (req, res, next) => {
   const strValidationSummary = mergeErrors(arrErrors);
 
   next(customError(strValidationSummary, 422));
+
 };
 
 // frontend needs errors to be strings D:
