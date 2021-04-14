@@ -1,4 +1,5 @@
 const { body, validationResult } = require("express-validator");
+const customError = require('../helpers/customError')
 
 //Record Validation
 exports.validateRecord = (req, res, next) => {
@@ -35,7 +36,7 @@ exports.validateOrder = (req, res, next) => {
   }
 };
 
-//users validatino && sanitization
+//users validation && sanitization
 exports.userValidationRules = () => {
   return [
     body("email")
@@ -47,7 +48,7 @@ exports.userValidationRules = () => {
       .isLength({ min: 10 })
       .withMessage("short password :s")
       .custom((value) => {
-        // //value is password in the body
+        //value is password in the body
         // * Passwords must be
         // * - At least 8 characters long, max length anything
         // * - Include at least 1 lowercase letter
@@ -82,10 +83,10 @@ exports.userValidationErrorHandling = (req, res, next) => {
   const strValidationSummary = mergeErrors(arrErrors);
 
   next(customError(strValidationSummary, 422));
+
 };
 
-// frontend needs errors as string
-// => so let's merge them togetherrrrr
+// frontend needs errors to be strings D:
 const mergeErrors = (arrErrors) => {
-  return arrErrors.map((error) => `${error.param}: ${error.msg}`).join(". ");
+  return arrErrors.map((error) => `${error.param}: ${error.msg}`).join('. ');
 };
