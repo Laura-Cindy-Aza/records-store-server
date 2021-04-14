@@ -25,7 +25,7 @@ exports.validateRecord = (req, res, next) => {
 exports.validateOrder = (req, res, next) => {
   console.log("This comes from the custom middleware", req.body);
   const order = req.body;
-  if (order.records && order.userId && order.totalPrice) next();
+  if (order.records && order.totalPrice) next();
   else {
     // We will create an error with a message
     const error = new Error(`Your order is not right`);
