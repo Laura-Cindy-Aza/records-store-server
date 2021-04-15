@@ -3,6 +3,7 @@ const router = express.Router();
 
 const {
   getOrder,
+  getOrders,
   addOrder,
   updateOrder,
   deleteOrder,
@@ -11,7 +12,7 @@ const {
 const { validateOrder } = require("../middleware/validation");
 
 // orders
-router.route("/").get(getOrder).post(validateOrder, addOrder);
+router.route("/").get(getOrders).post(validateOrder, addOrder);
 
 // orders/:id
 router
