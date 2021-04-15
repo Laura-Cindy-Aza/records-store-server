@@ -1,17 +1,10 @@
 const { body } = require("express-validator/check");
 const User = require("../models/User");
 const bcryptjs = require("bcryptjs");
-<<<<<<< HEAD
-const cookieParser = require('cookie-parser');
-const jwt = require('jsonwebtoken');
-const customError = require('../helpers/customError');
-
-=======
 
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const customError = require("../helpers/customError");
->>>>>>> ced06d1ebc136512c66870a72a644bede59df83a
 
 // GET /users => get all users
 exports.getUsers = async (req, res, next) => {
