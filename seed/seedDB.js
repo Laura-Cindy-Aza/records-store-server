@@ -64,7 +64,7 @@ console.log("We run the Seed script");
     console.log(error);
   }
 
-  //Record Promises
+  // Record Promises
   const recordPromises = Array(20)
     .fill(null)
     .map(() => {
