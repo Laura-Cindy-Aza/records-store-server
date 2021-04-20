@@ -54,33 +54,36 @@ exports.addUser = async (req, res, next) => {
 
 // Log in user =>
 
-exports.loginUser = async (req, res, next) => {
-  const { email, password } = req.body;
+// exports.loginUser = async (req, res, next) => {
+//   const { email, password } = req.body;
 
-  try {
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.json({ msg: "Invalid email" });
-    }
-    const isMatch = await bcryptjs.compare(password, user.password);
-    // const isMatch = password === user.password;
-    if (!isMatch) {
-      return res.json({ msg: "Invalid password" });
-    }
-    res.json(user);
-  } catch (error) {
-    next(error);
-  }
-};
+//   try {
+//     const user = await User.findOne({ email });
+//     if (!user) {
+//       return res.json({ msg: "Invalid email" });
+//     }
+//     const isMatch = await bcryptjs.compare(password, user.password);
+//     // const isMatch = password === user.password;
+//     if (!isMatch) {
+//       return res.json({ msg: "Invalid password" });
+//     }
+//     res.json(user);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 
 // PATCH /users/:id => update user by ID
 exports.updateUser = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    let updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true });
-    Object.assign(user, req.body);
-    const userUpdated = await updatedUser.save();
+    let user = await User.findById(id);
+    console.log("user :>> ", user);
+
+    const userTest = Object.assign(user, req.body);
+    console.log("test :>> ", userTest);
+    const userUpdated = await user.save();
     res.json(userUpdated);
   } catch (err) {
     next(err);
@@ -138,7 +141,7 @@ exports.loginUser = async (req, res, next) => {
       })
       .json(userFound);
   } catch (err) {
-    next(error);
+    next(err);
   }
 };
 
