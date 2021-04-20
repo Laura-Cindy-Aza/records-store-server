@@ -68,7 +68,7 @@ UserSchema.statics.findByToken = function (token) {
   try {
     // if the token is valid then we get back whatever we
     // signed the cookie with  -> { _id: user._id.toString() }
-    let decoded = jwt.verify(token, ourSuperSecretKey);
+    let decoded = jwt.verify(token, secretKey);
     console.log(`decoded`, decoded);
     return User.findOne({ _id: decoded._id });
   } catch (error) {

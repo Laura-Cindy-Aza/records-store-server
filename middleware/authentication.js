@@ -3,6 +3,7 @@ const User = require("../models/User");
 
 exports.auth = async (req, res, next) => {
   try {
+    console.log(`req.cookies`, req.cookies);
     // take the cookie/token from the request
     const token = req.cookies.token;
     // validate the cookie and check for the user with that _id
