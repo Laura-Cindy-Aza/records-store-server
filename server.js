@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -16,7 +17,14 @@ app.listen(PORT, () => {
 });
 
 // Express Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000", // frontend URL should be configurable
+    credentials: true, // allow cookies to be sent from frontend to us
+  })
+);
+
+app.use(cookieParser());
 app.use(express.json());
 app.use("/statics", express.static("statics"));
 
