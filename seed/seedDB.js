@@ -8,7 +8,32 @@ console.log("We run the Seed script");
 
 (async function () {
   const connectionStr = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.MONGO_URI}/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+  const coversArr = [
+    "https://lastfm.freetls.fastly.net/i/u/300x300/b7e1387c15974583b145baa628b5bd9d.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/bc774aa1cd93455aa894c23e4dcf147e.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/24c41a77c55f55c85227aad3e6b6b34c.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/6b9962167f0f258bb712a30559042847.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/47a9e7f9bb42465bb17de9bb6443a20d.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/e3a5ab5db593474c90186f1d27675d4c.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/fbaca4fa04144408a926fca8c5fb7ea0.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/35be2516b85d426a9949e76545b6e171.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/1b842adc148bf1617efec1285d7aa3cd.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/c0e5c74b9892065101998d04cad4599d.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/95b9d688f9d3cdbf5ef49fc621a979c2.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/be398921906837fe629cc074c74a9788.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/e3d5f839692f40c6a0e1b718b5470d0a.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/698f6f6e7bddbca607a051d5bea778d8.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/dbc1a14d7d2643c75ef78c3d012ea226.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/4801131728db41cfb1b8f128bfae88a1.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/ea1478526a2947adb91787f63a5d96cb.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/42b3ef00cb4a49cfc9342c0bf363de2d.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/24de212fd96528ffdd548bf499c0d161.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/908111b97f5f41c783376fc81535ab01.png",
+    "https://lastfm.freetls.fastly.net/i/u/300x300/e04d824b2d764487ac2f23cf55523d55.png",
+  ];
 
+  let mapedCovers = coversArr.map((disc) => disc);
+  console.log("object :>> ", mapedCovers);
   mongoose
     .connect(connectionStr, {
       useNewUrlParser: true,
@@ -67,10 +92,10 @@ console.log("We run the Seed script");
   // Record Promises
   const recordPromises = Array(20)
     .fill(null)
-    .map(() => {
+    .map((a, i) => {
       // create a fake record
       const recordData = {
-        cover: faker.image.abstract(),
+        cover: coversArr[i],
         title: faker.lorem.word(),
         artist: faker.name.jobType(),
         year: faker.date.past(),
